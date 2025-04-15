@@ -9,7 +9,6 @@ import com.uade.tpo.electromarket.exceptions.CategoriaDuplicadaException;
 import com.uade.tpo.electromarket.service.CategoriaService;
 import com.uade.tpo.electromarket.service.CategoriaServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.net.URI;
@@ -46,13 +45,13 @@ public class CategoriaController {
         return ResponseEntity.noContent().build();
     }
 
-    //@PostMapping
-    //public ResponseEntity<Object> agregarCategoria(@RequestBody CategoriaRequest categoriaRequest) throws CategoriaDuplicadaException {
-    //    CategoriaServiceImpl categoriaService = new CategoriaServiceImpl();
-    //    
-    //    Categoria result = categoriaService.agregarCategoria(categoriaRequest.getId(),categoriaRequest.getNombre(), categoriaRequest.getDescripcion());
-    //    return ResponseEntity.created(URI.create("/categories/" + result.getId())).body(result);
-    //}
+    @PostMapping
+    public ResponseEntity<Object> agregarCategoria(@RequestBody CategoriaRequest categoriaRequest) throws CategoriaDuplicadaException {
+        CategoriaServiceImpl categoriaService = new CategoriaServiceImpl();
+        
+        Categoria result = categoriaService.agregarCategoria(categoriaRequest.getNombre(), categoriaRequest.getDescripcion());
+        return ResponseEntity.created(URI.create("/categories/" + result.getId())).body(result);
+    }
     
     
 }

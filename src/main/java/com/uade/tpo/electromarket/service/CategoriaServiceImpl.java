@@ -1,6 +1,5 @@
 package com.uade.tpo.electromarket.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,13 +30,11 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     
-   // public Categoria agregarCategoria(int id, String nombre, String descripcion) throws CategoriaDuplicadaException{
-   //     ArrayList<Categoria> categorias = categoriaRepository.getCategorias();
-   //     if (categorias.stream().anyMatch(
-   //             categoria -> categoria.getId() ==   id && 
-   //                                                 categoria.getNombre().equals(nombre) &&
-   //                                                 categoria.getDescripcion().equals(descripcion) ))
-   //         throw new CategoriaDuplicadaException();
-   //     return categoriaRepository.agregarCategoria(id, nombre, descripcion);
-   // }
+   public Categoria agregarCategoria(String nombre, String descripcion) throws CategoriaDuplicadaException{
+        List<Categoria> categorias = categoriaRepository.findAll();
+        if (categorias.stream().anyMatch(
+                categoria -> categoria.getNombre().equals(nombre) ))
+            throw new CategoriaDuplicadaException();
+        return categoriaRepository.save(new Categoria(nombre, descripcion));
+    }
 }
