@@ -3,7 +3,7 @@ package com.uade.tpo.electromarket.responses;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-@Data
+
 @Getter
 @Setter
 @NoArgsConstructor
