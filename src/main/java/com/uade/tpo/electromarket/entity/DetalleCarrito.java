@@ -11,9 +11,11 @@ import lombok.Data;
 @Entity
 public class DetalleCarrito {
     
-    public DetalleCarrito(){
-
-
+    public DetalleCarrito(long pedidoId,Producto producto,int cantidad,float precio){
+        this.pedidoId = pedidoId;
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.precio   = precio;
     }
 
     @Id
@@ -24,7 +26,7 @@ public class DetalleCarrito {
     private long pedidoId;
 
     @Column
-    private Pedido pedido;
+    private Producto producto;
 
     @Column
     private int cantidad;
