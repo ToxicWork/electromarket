@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.uade.tpo.electromarket.entity.Categoria;
 import com.uade.tpo.electromarket.exceptions.CategoriaDuplicadaException;
 import com.uade.tpo.electromarket.repository.CategoriaRepository;
-import com.uade.tpo.electromarket.repository.CategoriaRepositoryOld;
+
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
