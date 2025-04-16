@@ -50,7 +50,7 @@ public class CategoriaController {
         CategoriaServiceImpl categoriaService = new CategoriaServiceImpl();
         
         Categoria result = categoriaService.agregarCategoria(categoriaRequest.getNombre(), categoriaRequest.getDescripcion());
-        return ResponseEntity.created(URI.create("/categories/" + result.getId())).body(result);
+        return ResponseEntity.created(URI.create("/categorias/" + result.getId())).body(result);
     }
     
     
