@@ -20,6 +20,8 @@ import com.uade.tpo.electromarket.service.ProductoService;
 import com.uade.tpo.electromarket.service.ProductoServiceImpl;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -39,7 +41,7 @@ public class ProductoController {
     
     @GetMapping("/{productoId}")
     public ResponseEntity<Producto> getProductoPorId(@PathVariable long productoId) {
-           Optional<Producto> result = productoService.getProductoPorId(productoId);
+        Optional<Producto> result = productoService.getProductoPorId(productoId);
         if (result.isPresent())
             return ResponseEntity.ok(result.get());
 
@@ -54,20 +56,18 @@ public class ProductoController {
         return ResponseEntity.created(URI.create("/productos/" + result.getId())).body(result);
     }
 
-    @PostMapping
+    @PutMapping("/{productoId}")
     public ResponseEntity<Object> agregarStock(@RequestBody ProductoRequest productoRequest) throws ProductoNoExisteException {
         ProductoServiceImpl productoService = new ProductoServiceImpl();
-        
-        Producto result = productoService.agregarStock(productoRequest.getNombre(),productoRequest.getStock());
-        return ResponseEntity.created(URI.create("/productos/" + result.getId())).body(result);
+        Producto result = productoService.agregarStock(productoRequest.getNombre(), productoRequest.getStock());
+        return ResponseEntity.ok(result);
     }
-
-    @PostMapping
+ 
+    @PutMapping("/{productoId}")
     public ResponseEntity<Object> modificarPrecio(@RequestBody ProductoRequest productoRequest) throws ProductoNoExisteException {
         ProductoServiceImpl productoService = new ProductoServiceImpl();
-        
-        Producto result = productoService.modificarPrecio(productoRequest.getNombre(),productoRequest.getPrecio());
-        return ResponseEntity.created(URI.create("/productos/" + result.getId())).body(result);
+        Producto result = productoService.modificarPrecio(productoRequest.getNombre(), productoRequest.getPrecio());
+        return ResponseEntity.ok(result);
     }
 
 }
