@@ -27,7 +27,7 @@ public class Categoria {
     @Column
     private String descripcion;
 
-    @OneToOne(mappedBy = "category")
+    @OneToOne(mappedBy = "categoria")
     private Producto producto;
 
 }

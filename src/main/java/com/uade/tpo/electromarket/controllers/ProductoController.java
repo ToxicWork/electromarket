@@ -62,4 +62,12 @@ public class ProductoController {
         return ResponseEntity.created(URI.create("/productos/" + result.getId())).body(result);
     }
 
+    @PostMapping
+    public ResponseEntity<Object> modificarPrecio(@RequestBody ProductoRequest productoRequest) throws ProductoNoExisteException {
+        ProductoServiceImpl productoService = new ProductoServiceImpl();
+        
+        Producto result = productoService.modificarPrecio(productoRequest.getNombre(),productoRequest.getPrecio());
+        return ResponseEntity.created(URI.create("/productos/" + result.getId())).body(result);
+    }
+
 }

@@ -42,7 +42,7 @@ public class ProductoServiceImpl implements ProductoService{
                 producto -> producto.getNombre().equals(nombre) ))
             throw new ProductoNoExisteException();
         Producto producto = productos.getFirst();
-        producto.setStock(stock);
+        producto.setStock(producto.getStock() + stock);
 
         return productoRepository.save(producto);
     }
@@ -53,7 +53,7 @@ public class ProductoServiceImpl implements ProductoService{
                 producto -> producto.getNombre().equals(nombre) ))
             throw new ProductoNoExisteException();
         Producto producto = productos.getFirst();
-        producto.setPrecio(precio);;
+        producto.setPrecio(precio);
 
         return productoRepository.save(producto);
     }
