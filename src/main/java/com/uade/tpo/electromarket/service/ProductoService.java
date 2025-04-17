@@ -12,8 +12,7 @@ public interface ProductoService {
     public List<Producto> getProductos();
     public Optional<Producto> getProductoPorId(long productoId);
     public Producto agregarProducto(String nombre, String descripcion) throws ProductoDuplicadoException;
-    public Producto agregarStock(String nombre, long stock) throws ProductoNoExisteException;
-    public Producto modificarPrecio(String nombre, float precio) throws ProductoNoExisteException;
+    public Producto actualizarProducto(String nombre, long stock, float precio) throws ProductoNoExisteException;
 }
 
 

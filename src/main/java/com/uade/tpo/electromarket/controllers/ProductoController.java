@@ -50,24 +50,18 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<Object> agregarProducto(@RequestBody ProductoRequest productoRequest) throws ProductoDuplicadoException {
-        ProductoServiceImpl productoService = new ProductoServiceImpl();
-        
+                
         Producto result = productoService.agregarProducto(productoRequest.getNombre(), productoRequest.getDescripcion());
         return ResponseEntity.created(URI.create("/productos/" + result.getId())).body(result);
     }
 
-    @PutMapping("/{productoId}")
-    public ResponseEntity<Object> agregarStock(@RequestBody ProductoRequest productoRequest) throws ProductoNoExisteException {
-        ProductoServiceImpl productoService = new ProductoServiceImpl();
-        Producto result = productoService.agregarStock(productoRequest.getNombre(), productoRequest.getStock());
-        return ResponseEntity.ok(result);
+    @PutMapping
+    public ResponseEntity<Object> actualizarProducto(@RequestBody ProductoRequest productoRequest) throws ProductoNoExisteException {
+       
+       productoService.actualizarProducto(productoRequest.getNombre(),productoRequest.getStock(),productoRequest.getPrecio());
+       
+       return ResponseEntity.ok(productoRequest);
     }
  
-    @PutMapping("/{productoId}")
-    public ResponseEntity<Object> modificarPrecio(@RequestBody ProductoRequest productoRequest) throws ProductoNoExisteException {
-        ProductoServiceImpl productoService = new ProductoServiceImpl();
-        Producto result = productoService.modificarPrecio(productoRequest.getNombre(), productoRequest.getPrecio());
-        return ResponseEntity.ok(result);
-    }
 
 }

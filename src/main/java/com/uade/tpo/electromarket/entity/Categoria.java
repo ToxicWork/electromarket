@@ -12,6 +12,10 @@ import lombok.Data;
 @Entity
 public class Categoria {
     
+    public Categoria(){
+        
+    }
+
     public Categoria(String nombre, String descripcion){
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -19,7 +23,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     
     @Column
     private String nombre;

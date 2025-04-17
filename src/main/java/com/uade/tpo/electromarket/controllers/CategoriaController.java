@@ -47,8 +47,7 @@ public class CategoriaController {
 
     @PostMapping
     public ResponseEntity<Object> agregarCategoria(@RequestBody CategoriaRequest categoriaRequest) throws CategoriaDuplicadaException {
-        CategoriaServiceImpl categoriaService = new CategoriaServiceImpl();
-        
+                
         Categoria result = categoriaService.agregarCategoria(categoriaRequest.getNombre(), categoriaRequest.getDescripcion());
         return ResponseEntity.created(URI.create("/categorias/" + result.getId())).body(result);
     }

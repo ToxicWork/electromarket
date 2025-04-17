@@ -1,6 +1,7 @@
 package com.uade.tpo.electromarket.service;
 
 import java.util.List;
+import java.util.Locale.Category;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,33 +29,27 @@ public class ProductoServiceImpl implements ProductoService{
     }
 
     
-   public Producto agregarProducto(String nombre, String descripcion) throws ProductoDuplicadoException{
-        List<Producto> productos = productoRepository.findAll();
-        if (productos.stream().anyMatch(
-                producto -> producto.getNombre().equals(nombre) ))
-            throw new ProductoDuplicadoException();
-        return productoRepository.save(new Producto(nombre, descripcion));
+    public Producto agregarProducto(String nombre, String descripcion) throws ProductoDuplicadoException {
+        List<Producto> productos = productoRepository.findByNombre(nombre);
+        if (productos.isEmpty()) {
+            productoRepository.save(new Producto(nombre, descripcion));
+        }
+
+        throw new ProductoDuplicadoException();
     }
 
-    public Producto agregarStock(String nombre, long stock) throws ProductoNoExisteException{
-        List<Producto> productos = productoRepository.findAll();
-        if (! productos.stream().anyMatch(
-                producto -> producto.getNombre().equals(nombre) ))
+    public Producto actualizarProducto(String nombre, long stock, float precio) throws ProductoNoExisteException{
+        List<Producto> productos = productoRepository.findByNombre(nombre);
+        if (productos.isEmpty()) {
             throw new ProductoNoExisteException();
-        Producto producto = productos.getFirst();
-        producto.setStock(producto.getStock() + stock);
+        }
 
-        return productoRepository.save(producto);
+        Producto productoActualizado = productos.getFirst();
+
+        productoActualizado.setStock(stock);
+        productoActualizado.setPrecio(precio);
+
+        return productoRepository.save(productoActualizado);
     }
 
-    public Producto modificarPrecio(String nombre, float precio) throws ProductoNoExisteException{
-        List<Producto> productos = productoRepository.findAll();
-        if (! productos.stream().anyMatch(
-                producto -> producto.getNombre().equals(nombre) ))
-            throw new ProductoNoExisteException();
-        Producto producto = productos.getFirst();
-        producto.setPrecio(precio);
-
-        return productoRepository.save(producto);
-    }
 }

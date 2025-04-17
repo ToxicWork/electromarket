@@ -31,10 +31,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     
    public Categoria agregarCategoria(String nombre, String descripcion) throws CategoriaDuplicadaException{
-        List<Categoria> categorias = categoriaRepository.findAll();
-        if (categorias.stream().anyMatch(
-                categoria -> categoria.getNombre().equals(nombre) ))
+        List<Categoria> categorias = categoriaRepository.buscarPorNombre(nombre);
+        if (categorias.isEmpty()) {
+            return categoriaRepository.save(new Categoria(nombre,descripcion));
+        }
+        else{
             throw new CategoriaDuplicadaException();
-        return categoriaRepository.save(new Categoria(nombre, descripcion));
+        }
     }
 }
