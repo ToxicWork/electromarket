@@ -12,17 +12,17 @@ import com.uade.tpo.electromarket.exceptions.ProductoNoExisteException;
 import com.uade.tpo.electromarket.repository.ProductoRepository;
 
 @Service
-public class ProductoServiceImpl {
-     @Autowired
+public class ProductoServiceImpl implements ProductoService{
+    @Autowired
     private ProductoRepository productoRepository;
 
-    public List<Producto> getCategorias() {
+    public List<Producto> getProductos() {
         
         return productoRepository.findAll();
     }
     
     
-    public Optional<Producto> getCategoriaPorId(long productoId) {
+    public Optional<Producto> getProductoPorId(long productoId) {
         
         return productoRepository.findById(productoId);
     }
@@ -36,7 +36,7 @@ public class ProductoServiceImpl {
         return productoRepository.save(new Producto(nombre, descripcion));
     }
 
-    public Producto agregarStock(String nombre, Long stock) throws ProductoNoExisteException{
+    public Producto agregarStock(String nombre, long stock) throws ProductoNoExisteException{
         List<Producto> productos = productoRepository.findAll();
         if (! productos.stream().anyMatch(
                 producto -> producto.getNombre().equals(nombre) ))

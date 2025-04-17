@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class ProductoController {
     
-     @Autowired
+    @Autowired
     private ProductoService productoService;
 
     
