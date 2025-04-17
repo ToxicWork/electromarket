@@ -35,8 +35,8 @@ public class CategoriaServiceImpl implements CategoriaService {
         if (categorias.isEmpty()) {
             return categoriaRepository.save(new Categoria(nombre,descripcion));
         }
-        else{
-            throw new CategoriaDuplicadaException();
-        }
+        
+        throw new CategoriaDuplicadaException();
+       
     }
 }

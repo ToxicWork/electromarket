@@ -1,7 +1,5 @@
 package com.uade.tpo.electromarket.entity;
 
-import java.util.Locale.Category;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +13,10 @@ import lombok.Data;
 @Entity
 public class Producto {
 
+    public Producto(){
+
+    }
+    
     public Producto(String nombre, String descripcion){
         this.nombre         = nombre;
         this.descripcion    = descripcion;

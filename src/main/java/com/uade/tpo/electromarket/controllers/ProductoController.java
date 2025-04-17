@@ -17,7 +17,6 @@ import com.uade.tpo.electromarket.entity.dto.ProductoRequest;
 import com.uade.tpo.electromarket.exceptions.ProductoDuplicadoException;
 import com.uade.tpo.electromarket.exceptions.ProductoNoExisteException;
 import com.uade.tpo.electromarket.service.ProductoService;
-import com.uade.tpo.electromarket.service.ProductoServiceImpl;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PutMapping;

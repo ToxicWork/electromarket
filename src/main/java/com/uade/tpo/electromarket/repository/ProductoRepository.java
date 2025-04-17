@@ -12,5 +12,5 @@ import com.uade.tpo.electromarket.entity.Producto;
 public interface ProductoRepository extends JpaRepository<Producto,Long>{
     
     @Query(value = "select p from Producto p where p.nombre = ?1")
-    List<Producto> findByNombre(String nombre);
+    List<Producto> buscarPorNombre(String nombre);
 }

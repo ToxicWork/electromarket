@@ -1,7 +1,6 @@
 package com.uade.tpo.electromarket.service;
 
 import java.util.List;
-import java.util.Locale.Category;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,21 +29,22 @@ public class ProductoServiceImpl implements ProductoService{
 
     
     public Producto agregarProducto(String nombre, String descripcion) throws ProductoDuplicadoException {
-        List<Producto> productos = productoRepository.findByNombre(nombre);
+        List<Producto> productos = productoRepository.buscarPorNombre(nombre);
         if (productos.isEmpty()) {
-            productoRepository.save(new Producto(nombre, descripcion));
+            return productoRepository.save(new Producto(nombre, descripcion));
         }
-
-        throw new ProductoDuplicadoException();
+        
+        throw new ProductoDuplicadoException();        
+        
     }
 
     public Producto actualizarProducto(String nombre, long stock, float precio) throws ProductoNoExisteException{
-        List<Producto> productos = productoRepository.findByNombre(nombre);
+        List<Producto> productos = productoRepository.buscarPorNombre(nombre);
         if (productos.isEmpty()) {
             throw new ProductoNoExisteException();
         }
 
-        Producto productoActualizado = productos.getFirst();
+        Producto productoActualizado = productos.get(0);
 
         productoActualizado.setStock(stock);
         productoActualizado.setPrecio(precio);
