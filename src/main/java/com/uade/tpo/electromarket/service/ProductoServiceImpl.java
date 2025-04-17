@@ -46,4 +46,15 @@ public class ProductoServiceImpl {
 
         return productoRepository.save(producto);
     }
+
+    public Producto modificarPrecio(String nombre, float precio) throws ProductoNoExisteException{
+        List<Producto> productos = productoRepository.findAll();
+        if (! productos.stream().anyMatch(
+                producto -> producto.getNombre().equals(nombre) ))
+            throw new ProductoNoExisteException();
+        Producto producto = productos.getFirst();
+        producto.setPrecio(precio);;
+
+        return productoRepository.save(producto);
+    }
 }
