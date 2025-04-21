@@ -44,8 +44,8 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, unique = true)
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
-    private List<Pedido> pepidos;
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos;
 
     @Enumerated(EnumType.STRING)
     private Role role;
