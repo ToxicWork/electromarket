@@ -23,7 +23,7 @@ public class Carrito {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private User usuario;
+    private Usuario usuario;
 
     @Column(name = "fecha")
     private LocalDateTime fecha;
