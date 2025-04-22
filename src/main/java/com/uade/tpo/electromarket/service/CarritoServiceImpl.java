@@ -1,41 +1,36 @@
 package com.uade.tpo.electromarket.service;
 
 import com.uade.tpo.electromarket.entity.Carrito;
-import com.uade.tpo.electromarket.repository.CarritoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.uade.tpo.electromarket.service.CarritoService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CarritoServiceImpl implements CarritoService {
 
-    @Autowired
-    private CarritoRepository carritoRepository;
+    private final List<Carrito> carritos = new ArrayList<>();
 
     @Override
-    public List<Carrito> obtenerCarritos() {
-        return carritoRepository.findAll();
+    public List<Carrito> obtenerTodos() {
+        return new ArrayList<>(carritos);
     }
 
     @Override
-    public Optional<Carrito> obtenerCarritoPorId(Long carritoId) {
-        return carritoRepository.findById(carritoId);
+    public Optional<Carrito> obtenerPorId(Long id) {
+        return carritos.stream().filter(c -> c.getId().equals(id)).findFirst();
     }
 
     @Override
-    public Carrito crearCarrito(Carrito carrito) {
-        return carritoRepository.save(carrito);
+    public Carrito crear(Carrito carrito) {
+        carritos.add(carrito);
+        return carrito;
     }
 
     @Override
-    public Carrito actualizarCarrito(Carrito carrito) {
-        return carritoRepository.save(carrito);
-    }
-
-    @Override
-    public void eliminarCarrito(Long carritoId) {
-        carritoRepository.deleteById(carritoId);
+    public void eliminar(Long id) {
+        carritos.removeIf(c -> c.getId().equals(id));
     }
 }
