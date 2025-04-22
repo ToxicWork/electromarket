@@ -26,6 +26,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Usuario implements UserDetails {
+    
+    public Usuario(String email,String firstname, String lastname, String password){
+        this.email      = email;
+        this.firstName  = firstname;
+        this.lastName   = lastname;
+        this.password   = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
