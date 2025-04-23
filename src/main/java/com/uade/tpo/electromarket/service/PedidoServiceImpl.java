@@ -30,7 +30,7 @@ public class PedidoServiceImpl implements PedidoService{
     public Pedido agregarPedido(List<Producto> productos) {
         
         Pedido nuevoPedido = new Pedido();
-        nuevoPedido.setProductos(productos);
+        //nuevoPedido.setProductos(productos);
 
         return pedidoRepository.save(nuevoPedido);
        
@@ -42,7 +42,7 @@ public class PedidoServiceImpl implements PedidoService{
 
         Pedido pedidoActualizado = pedidos.get(0);
 
-        pedidoActualizado.setProductos(productos);
+        //pedidoActualizado.setProductos(productos);
 
         return pedidoRepository.save(pedidoActualizado);
        
