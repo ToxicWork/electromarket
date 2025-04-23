@@ -45,6 +45,8 @@ public class SecurityConfig {
                                                 .requestMatchers(HttpMethod.POST,"/usuarios/**").hasAnyAuthority(Role.ADMIN.name())
                                                 .requestMatchers(HttpMethod.PUT,"/usuarios/**").hasAnyAuthority(Role.ADMIN.name())
                                                 .requestMatchers(HttpMethod.DELETE,"/usuarios/**").hasAnyAuthority(Role.ADMIN.name())
+                                                .requestMatchers("/pedidos/**").hasAnyAuthority(Role.USER.name())
+                                                .requestMatchers("/pedidos/**").hasAnyAuthority(Role.ADMIN.name())
                                                 .anyRequest()
                                                 .authenticated())
                                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
