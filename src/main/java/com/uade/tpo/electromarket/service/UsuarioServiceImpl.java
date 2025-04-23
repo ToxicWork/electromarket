@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uade.tpo.electromarket.entity.Producto;
 import com.uade.tpo.electromarket.entity.Usuario;
 import com.uade.tpo.electromarket.exceptions.UsuarioDuplicadoException;
 import com.uade.tpo.electromarket.exceptions.UsuarioNoExisteException;
@@ -40,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
     
     public Usuario actualizarUsuario(String email,String firstname, String lastname, String password) throws UsuarioNoExisteException{
-        List<Usuario> usuarios = usuarioRepository.findByEmail(email).map(List::of).orElse(Collections.emptyList());;
+        List<Usuario> usuarios = usuarioRepository.findByEmail(email).map(List::of).orElse(Collections.emptyList());
         if (usuarios.isEmpty()) {
             throw new UsuarioNoExisteException();
         }
@@ -54,4 +55,11 @@ public class UsuarioServiceImpl implements UsuarioService{
 
         return usuarioRepository.save(usuarioActualizado);
     }    
+
+
+    public void eliminarUsuario(String email){
+         List<Usuario> usuarios = usuarioRepository.findByEmail(email).map(List::of).orElse(Collections.emptyList());
+        
+         usuarioRepository.delete(usuarios.get(0));
+    }
 }

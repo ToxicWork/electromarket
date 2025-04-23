@@ -13,6 +13,7 @@ public interface ProductoService {
     public Optional<Producto> getProductoPorId(long productoId);
     public Producto agregarProducto(String nombre, String descripcion) throws ProductoDuplicadoException;
     public Producto actualizarProducto(String nombre, long stock, float precio) throws ProductoNoExisteException;
+    public void eliminarProducto(String nombre);
 }
 
 

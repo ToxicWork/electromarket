@@ -39,4 +39,11 @@ public class CategoriaServiceImpl implements CategoriaService {
         throw new CategoriaDuplicadaException();
        
     }
+
+    public void eliminarCategoria(String nombre){
+        List<Categoria> categorias = categoriaRepository.buscarPorNombre(nombre);
+        
+        categoriaRepository.delete(categorias.get(0));
+
+    }
 }

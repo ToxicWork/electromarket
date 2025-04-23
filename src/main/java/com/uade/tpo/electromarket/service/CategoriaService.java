@@ -10,4 +10,5 @@ public interface CategoriaService {
     public List<Categoria> getCategorias();
     public Optional<Categoria> getCategoriaPorId(long categoriaId);
     public Categoria agregarCategoria(String nombre, String descripcion) throws CategoriaDuplicadaException;
+    public void eliminarCategoria(String nombre);
 }

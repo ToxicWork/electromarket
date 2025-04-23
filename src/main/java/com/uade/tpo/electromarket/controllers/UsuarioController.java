@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uade.tpo.electromarket.entity.Usuario;
+import com.uade.tpo.electromarket.entity.dto.ProductoRequest;
 import com.uade.tpo.electromarket.entity.dto.UsuarioRequest;
 import com.uade.tpo.electromarket.exceptions.UsuarioDuplicadoException;
 import com.uade.tpo.electromarket.exceptions.UsuarioNoExisteException;
@@ -64,4 +66,10 @@ public class UsuarioController {
        return ResponseEntity.ok(usuarioRequest);
     }    
 
+    @DeleteMapping
+    public void eliminarUsuario(@RequestBody UsuarioRequest usuarioRequest){
+
+        usuarioService.eliminarUsuario(usuarioRequest.getEmail());
+
+    }
 }

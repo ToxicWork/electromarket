@@ -52,4 +52,12 @@ public class ProductoServiceImpl implements ProductoService{
         return productoRepository.save(productoActualizado);
     }
 
+    public void eliminarProducto(String nombre){
+
+         List<Producto> productos = productoRepository.buscarPorNombre(nombre);
+        
+         productoRepository.delete(productos.get(0));
+
+    };
+
 }

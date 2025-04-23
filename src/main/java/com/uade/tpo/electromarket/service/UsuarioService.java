@@ -12,4 +12,5 @@ public interface UsuarioService {
     public Optional<Usuario> getUsuarioPorId(long usuarioId);
     public Usuario agregarUsuario(String email,String firstname, String lastname, String password) throws UsuarioDuplicadoException;
     public Usuario actualizarUsuario(String email,String firstname, String lastname, String password) throws UsuarioNoExisteException;
+    public void eliminarUsuario(String email);
 }
