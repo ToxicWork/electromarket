@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uade.tpo.electromarket.entity.Usuario;
-import com.uade.tpo.electromarket.entity.dto.ProductoRequest;
 import com.uade.tpo.electromarket.entity.dto.UsuarioRequest;
 import com.uade.tpo.electromarket.exceptions.UsuarioDuplicadoException;
 import com.uade.tpo.electromarket.exceptions.UsuarioNoExisteException;

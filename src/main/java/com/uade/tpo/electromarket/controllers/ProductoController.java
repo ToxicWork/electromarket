@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uade.tpo.electromarket.entity.Producto;
-import com.uade.tpo.electromarket.entity.dto.CategoriaRequest;
 import com.uade.tpo.electromarket.entity.dto.ProductoRequest;
 import com.uade.tpo.electromarket.exceptions.ProductoDuplicadoException;
 import com.uade.tpo.electromarket.exceptions.ProductoNoExisteException;
+import com.uade.tpo.electromarket.exceptions.ProductoSinStockException;
 import com.uade.tpo.electromarket.service.ProductoService;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +41,7 @@ public class ProductoController {
     }
     
     @GetMapping("/{productoId}")
-    public ResponseEntity<Producto> getProductoPorId(@PathVariable long productoId) {
+    public ResponseEntity<Producto> getProductoPorId(@PathVariable long productoId) throws ProductoSinStockException{
         Optional<Producto> result = productoService.getProductoPorId(productoId);
         if (result.isPresent())
             return ResponseEntity.ok(result.get());

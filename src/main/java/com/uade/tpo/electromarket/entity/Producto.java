@@ -43,4 +43,8 @@ public class Producto {
     @OneToOne
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Categoria categoria;
+
+    public boolean tieneStock(){
+        return this.stock > 0;
+    }
 }
