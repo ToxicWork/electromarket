@@ -1,7 +1,6 @@
 package com.uade.tpo.electromarket.service;
 
 import com.uade.tpo.electromarket.entity.Carrito;
-import com.uade.tpo.electromarket.service.CarritoService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

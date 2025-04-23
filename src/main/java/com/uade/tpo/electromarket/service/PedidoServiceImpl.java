@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.uade.tpo.electromarket.entity.Pedido;
 import com.uade.tpo.electromarket.entity.Producto;
-import com.uade.tpo.electromarket.exceptions.ProductoNoExisteException;
 import com.uade.tpo.electromarket.repository.PedidoRepository;
 
 @Service
