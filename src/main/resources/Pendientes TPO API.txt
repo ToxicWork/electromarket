@@ -6,3 +6,6 @@ TO DO:
 * Calcular Total y Subtotal de un Pedido: pendiente, porque falta aplicar Cupon
 * Productos con Stock 0: lo muestra igual, y no lanza la excepción. Requiere un fix.
 * Pedidos: hubo un error en una relación de la entidad, y tuvimos que hacer rollback. Requiere fix.
+* Delete de Producto: por id, que le pasemos el dato elemental, y no todo el objeto
+* Filtrar qué datos exponen los GET: por ejemplo: que no muestre la contraseña
+* Mensajes de respuestas HTTP (la contraseña de modificó correctamente, el usuario se creó con éxito, etc)
