@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uade.tpo.electromarket.entity.Pedido;
+import com.uade.tpo.electromarket.entity.Item;
 import com.uade.tpo.electromarket.entity.Producto;
 import com.uade.tpo.electromarket.repository.PedidoRepository;
 
@@ -27,26 +28,26 @@ public class PedidoServiceImpl implements PedidoService{
     
     }
     
-    public Pedido agregarPedido(List<Producto> productos) {
+    public Pedido agregarPedido(List<Item> pedidoItems) {
         
         Pedido nuevoPedido = new Pedido();
-        //nuevoPedido.setProductos(productos);
+        nuevoPedido.setItems(pedidoItems);
 
         return pedidoRepository.save(nuevoPedido);
        
     }
 
-    public Pedido actualizarPedido(List<Producto> productos, long pedidoId) {
+   // public Pedido actualizarPedido(List<Producto> productos, long pedidoId) {
         
-        List<Pedido> pedidos = pedidoRepository.findById(pedidoId).map(List::of).orElse(Collections.emptyList());
+   //     List<Pedido> pedidos = pedidoRepository.findById(pedidoId).map(List::of).orElse(Collections.emptyList());
 
-        Pedido pedidoActualizado = pedidos.get(0);
+   //     Pedido pedidoActualizado = pedidos.get(0);
 
         //pedidoActualizado.setProductos(productos);
 
-        return pedidoRepository.save(pedidoActualizado);
+   //     return pedidoRepository.save(pedidoActualizado);
        
-    }
+   // }
 
     public void eliminarPedido(long pedidoId){
         List<Pedido> pedidos = pedidoRepository.findById(pedidoId).map(List::of).orElse(Collections.emptyList());
@@ -54,4 +55,6 @@ public class PedidoServiceImpl implements PedidoService{
         pedidoRepository.delete(pedidos.get(0));
 
     }
+
+    
 }

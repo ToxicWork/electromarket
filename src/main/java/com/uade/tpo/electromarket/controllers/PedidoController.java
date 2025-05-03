@@ -46,17 +46,17 @@ public class PedidoController {
     @PostMapping
     public ResponseEntity<Object> agregarPedido(@RequestBody PedidoRequest pedidoRequest) {
                 
-        Pedido result = pedidoService.agregarPedido(pedidoRequest.getProductos());
+        Pedido result = pedidoService.agregarPedido(pedidoRequest.getPedidoItems());
         return ResponseEntity.created(URI.create("/pedidos/" + result.getId())).body(result);
     }
 
-    @PutMapping
-    public ResponseEntity<Object> actualizarPedido(@RequestBody PedidoRequest pedidoRequest) {
+    //@PutMapping
+    //public ResponseEntity<Object> actualizarPedido(@RequestBody PedidoRequest pedidoRequest) {
        
-        pedidoService.actualizarPedido(pedidoRequest.getProductos(),pedidoRequest.getId());
+    //    pedidoService.actualizarPedido(pedidoRequest.getProductos(),pedidoRequest.getId());
        
-       return ResponseEntity.ok(pedidoRequest);
-    }
+    //   return ResponseEntity.ok(pedidoRequest);
+    //}
 
     @DeleteMapping
     public void eliminarPedido(@RequestBody PedidoRequest pedidoRequest){

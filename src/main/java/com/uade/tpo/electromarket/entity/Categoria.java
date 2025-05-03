@@ -1,10 +1,13 @@
 package com.uade.tpo.electromarket.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
@@ -31,7 +34,7 @@ public class Categoria {
     @Column
     private String descripcion;
 
-    @OneToOne(mappedBy = "categoria")
-    private Producto producto;
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
 }

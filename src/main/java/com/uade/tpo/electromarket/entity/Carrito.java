@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,4 +19,20 @@ public class Carrito {
     private Usuario usuario;
     private LocalDateTime fecha;
     private EstadoCarrito estado;
+    private List<Item> items;
+
+    public Carrito agregarItem(Item item){
+        this.items.add(item);
+        return this;
+    }
+
+    public Carrito removerItem(Item item){
+        this.items.remove(item);
+        return this;
+    }
+
+    public Carrito vaciarCarrito(){
+        this.items.clear();
+        return this;
+    }
 }
