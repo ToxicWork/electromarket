@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CarritoController {
 
-    //@Autowired
+    @Autowired
     private CarritoService carritoService;
 
     //@GetMapping
@@ -51,19 +51,19 @@ public class CarritoController {
         return carritoService.agregarItem(carrito,item);
     }
 
-    @PostMapping
+    @PostMapping("/{productoId}")
     public Carrito removerItem(@RequestBody Carrito carrito,Item item) {
                 
         return carritoService.removerItem(carrito,item);
     }
 
-    @PostMapping
+    @PostMapping("/vaciar")
     public Carrito vaciarCarrito(@RequestBody Carrito carrito) {
                 
         return carritoService.vaciarCarrito(carrito);
     }
 
-    @PostMapping
+    @PostMapping("/comprar")
     public ResponseEntity<Object> comprarCarrito(@RequestBody Carrito carrito) {
                 
         return carritoService.comprarCarrito(carrito);
